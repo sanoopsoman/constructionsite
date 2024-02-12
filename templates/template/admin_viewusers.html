@@ -1,0 +1,54 @@
+{% extends 'adminbase.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+            <div class="heading">
+                <h2 class="title-subhny mb-2" style="margin-left: 400px;"><center><b>Registered Users</b></center></h2>
+            </div>
+            
+            <div class="form-inner-cont pt-lg-5">
+
+                <form method="post" class="signin-form">
+                    {% csrf_token %}
+                    <table class="table">  
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Age</th>
+                        <th>Address</th>
+                    </tr>
+                    {% for d in data %}
+                    <tr>
+                        <td>{{d.id}}</td>
+                        <td>{{d.name}}</td>
+                        <td>{{d.email}}</td>
+                        <td>{{d.phone}}</td>
+                        <td>{{d.age}}</td>
+                        <td>{{d.address}}</td>
+                        <!-- <td><a href="/workerViewcompany?acid={{d.cid}}">View</a></td> -->
+                    </tr>
+                    {% endfor %}
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+
+{% if msg %}
+<script>
+   
+    alert('{{msg}}')
+</script>
+{% endif %}
+
+{% endblock %}

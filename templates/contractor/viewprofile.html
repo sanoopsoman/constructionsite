@@ -1,0 +1,64 @@
+{% extends 'contractor/contractorbase.html'%}
+{% load static %}
+{% block content %}
+<header>
+    <h1>User Profile</h1>
+</header>
+
+<div class="profile-container" style="background-color: aquamarine;">
+    {% for i in  update %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="profile-image">
+        <img src="/static/media/{{i.img}}" alt="Profile Picture">
+    </div>
+    <input type="file" name="img">
+    <div class="">
+       
+            <label>Name:</label>
+            <div class="form-group">
+                <input type="text"  value="{{i.name}}" name="Cname" class="form-control" placeholder="User Name">
+            </div>
+            <div class="form-group">
+                <label>Qualification:</label>
+                <input type="text" value="{{i.qualification}}" name="email" class="form-control" placeholder="email">
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" value="{{i.email}}" name="email" class="form-control" placeholder="email">
+            </div>
+            <!-- <div class="form-group">
+                <label>image:</label>
+                <input type="file" value="{{i.img}}" name="img" class="form-control" placeholder="img">
+            </div> -->
+            <div class="form-group">
+                <label>Phone:</label>
+                <input type="number" value="{{i.phone}}" name="phone" class="form-control" placeholder="phone">
+            </div>
+          
+           
+            <div class="form-group">
+                <label>Address:</label>
+                <input type="text" value="{{i.address}}" name="address" class="form-control" placeholder="address">
+            </div>
+           
+        <div class="form-input">
+            Select an ID Proof:<br>
+            <img src="/static/media/{{i.idprof}}" alt="" width="100px" height="100px">
+            <input type="File" name="idprof" id="w3lName" placeholder="Id proof" required="" />
+        </div>
+        <center>
+            <input type="submit" class="btn btn-primary" value="update">
+        </center>
+        </form>
+
+        
+        <!-- Add more profile information as needed -->
+    </div>
+    {% endfor %}
+    <center>
+    <!-- <a href="/updateuser" class="btn btn-primary" style="border-radius:10px;">Update</a> -->
+    </center>
+</div>
+
+{% endblock %}

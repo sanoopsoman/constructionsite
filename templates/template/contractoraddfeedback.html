@@ -1,0 +1,29 @@
+{% extends 'workerbase.html' %}
+{% load static %}
+{% block content %}
+
+<div class="form-inner-cont pt-lg-5">
+    <form method="post" class="signin-form">
+        {% csrf_token %}
+        <div class="form-grids">
+
+
+            <div class="form-input" style="margin-top: -30px;">
+                <textarea name="text" id="Message" placeholder="Enter feedback here*" required=""></textarea>
+            </div>
+
+        </div>
+
+        <div class="text-center" style="margin-top: 40px;">
+            <button class="btn btn-style btn-effect">Send</button>
+        </div>
+    </form>
+</div>
+
+{% if msg %}
+<script>
+    alert("{{msg}}")
+</script>
+{% endif %}
+
+{% endblock %}

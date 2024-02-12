@@ -1,0 +1,158 @@
+{% extends 'contractor/contractorbase.html' %}
+{% load static %}
+{% block content %}
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+           <center><b><h1>Pending Alloted Works</h1></b></center>
+            <div class="form-inner-cont pt-lg-5">
+
+                    <table class="table table-bordered">
+                    <tr>
+                      
+                        
+                        <!-- <th>Email</th> -->
+                        <th>worker Name</th>
+                        <th>Work Type</th>
+                        <th>Phone</th>
+                        <th>Days</th>
+                        <th>Date</th>
+                        <th>Location</th>
+                        <th>Username</th>
+                        <th>status</th>
+                        <th>payment</th>
+                       
+                        <th colspan="2">Action</th>
+                    </tr>
+                    {% for i in work %}
+                    
+                    <tr>
+                        <td>{{i.wid.name}}</td>
+                        <td>{{i.wid.worktype}}</td>
+                        <td>{{i.rid.phone}}</td>
+                        <td>{{i.rid.days}}</td>
+                        <td>{{i.rid.date}}</td>
+                        <td>{{i.rid.location}}</td>
+                        <td>{{i.uid.name}}</td>
+                        <td>{{i.status}}</td>
+                        <td>{{i.rid.payment}}</td>
+                   
+ 
+                        <td style="white-space: nowrap;"><a href="/userrequestaction?id={{i.id}}&status=accepted">Accept</a></td>
+                        <td style="white-space: nowrap;"><a href="/AcceptRequest?id={{d.id}}">reject</a></td>
+                    </tr>
+                   
+                    {% endfor %}
+                </table>
+             
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+           <center><b><h1>Accepted Alloted Works</h1></b></center>
+            <div class="form-inner-cont pt-lg-5">
+
+                    <table class="table table-bordered">
+                    <tr>
+                      
+                        
+                        <!-- <th>Email</th> -->
+                        <th>worker Name</th>
+                        <th>Work Type</th>
+                        <th>Phone</th>
+                        <th>Days</th>
+                        <th>Date</th>
+                        <th>Location</th>
+                        <th>Username</th>
+                        <th>status</th>
+                        <th>payment</th>
+                       
+                        <th colspan="2">Action</th>
+                    </tr>
+                    {% for i in work1 %}
+                    
+                    <tr>
+                        <td>{{i.wid.name}}</td>
+                        <td>{{i.wid.worktype}}</td>
+                        <td>{{i.rid.phone}}</td>
+                        <td>{{i.rid.days}}</td>
+                        <td>{{i.rid.date}}</td>
+                        <td>{{i.rid.location}}</td>
+                        <td>{{i.uid.name}}</td>
+                        <td>{{i.status}}</td>
+                        <td>{{i.rid.payment}}</td>
+                   
+ 
+                        <td style="white-space: nowrap;"><a href="/userrequestaction?id={{i.id}}&status=accepted">Accept</a></td>
+                        <td style="white-space: nowrap;"><a href="/AcceptRequest?id={{d.id}}">reject</a></td>
+                    </tr>
+                   
+                    {% endfor %}
+                </table>
+             
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+           <center><b><h1>Completed Works</h1></b></center>
+            <div class="form-inner-cont pt-lg-5">
+
+                    <table class="table table-bordered">
+                    <tr>
+                      
+                        
+                        <!-- <th>Email</th> -->
+                        <th>worker Name</th>
+                        <th>Work Type</th>
+                        <th>Phone</th>
+                        <th>Days</th>
+                        <th>Date</th>
+                        <th>Location</th>
+                        <th>Username</th>
+                        <th>status</th>
+                        <th>payment</th>
+                        <th>amount</th>
+                       
+                        <th>Action</th>
+                    </tr>
+                    {% for i in work2 %}
+                    
+                    <tr>
+                        <td>{{i.wid.name}}</td>
+                        <td>{{i.wid.worktype}}</td>
+                        <td>{{i.rid.phone}}</td>
+                        <td>{{i.rid.days}}</td>
+                        <td>{{i.rid.date}}</td>
+                        <td>{{i.rid.location}}</td>
+                        <td>{{i.uid.name}}</td>
+                        <td>{{i.status}}</td>
+                        <td>{{i.rid.payment}}</td>
+                        <td id="res{{i.id}}"></td>
+                            <script>
+                                var day = "{{i.rid.days}}"
+                                var wage = "{{i.wid.wages}}"
+                                var total = day * wage
+                                document.getElementById("res{{i.id}}").innerHTML = total
+                            </script>
+ 
+                        <td style="white-space: nowrap;"><a href="/contractorpayment?Uid={{i.uid.id}}&wid={{i.wid.id}}&cid={{i.cid.id}}">Payment</a></td>
+                        {% comment %} <td style="white-space: nowrap;"><a href="/AcceptRequest?id={{d.id}}">reject</a></td> {% endcomment %}
+                    </tr>
+                   
+                    {% endfor %}
+                </table>
+             
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+{% endblock %}

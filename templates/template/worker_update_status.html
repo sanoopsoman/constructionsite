@@ -1,0 +1,22 @@
+{% extends 'workerbase.html' %}
+
+{% load static %}
+
+{% block content %}
+<br>
+<center><b><h1>Update status</h1></b></center>
+
+<div class="form-inner-cont pt-lg-5">
+    <form method="post" class="signin-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-grids">
+            <div class="form-input">
+                <input type="text" name="status" id="w3lName" placeholder="Work Status" required="" style="margin-left: 200px; background-color: rgb(225, 239, 240); border: 2px solid cadetblue; width: 400px;" /><br>
+                <button type="submit" class="btn btn-style btn-effect" style="margin-left: 340px;">Update</button>
+            </div><br>
+           
+        </div>
+    </form>
+</div><br><br>
+
+{% endblock %}

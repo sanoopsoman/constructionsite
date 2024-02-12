@@ -1,0 +1,90 @@
+{% extends 'constbase.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+            <div class="heading">
+                <h2 class="title-subhny mb-2" style="margin-left: 400px;">PROFILE</h2>
+                <h3 class="title-w3l mb-2"></h3>
+                <p class="mb-5"></p>
+            </div>
+            <div class="contacts-5-grid-main mb-5">
+                <div class="contacts-5-grid mb-lg-5">
+                    <div class="map-content-5">
+                        <section class="tab-content">
+                            <div class="container">
+                                <div class="d-grid grid-col-2">
+                                    <div class="contact-type">
+                                        <!-- <div class="address-grid">
+                                          <h6>Address</h6>
+                                          <p>#302, 5th Floor, ALHK-2247 ek, Settlers Lane, New York.</p><span
+                                              class="pos-icon">
+                                              <span class="fa fa-map"></span>
+                                          </span>
+                                      </div> -->
+                                        <!-- <div class="address-grid">
+                                          <h6>Email</h6>
+                                          <a href="mailto:mailone@example.com" class="link1">mailone@example.com</a>
+                                          <a href="mailto:mailtwo@example.com" class="link1">mailtwo@example.com</a><span
+                                              class="pos-icon">
+                                              <span class="fa fa-envelope"></span>
+                                          </span>
+                                      </div> -->
+                                        <!-- <div class="address-grid">
+                                          <h6>Phone</h6>
+                                          <a href="tel:+12 324-016-695" class="link1">+12 324-016-695</a>
+                                          <a href="tel:+44 224-058-545" class="link1">+44 224-058-545</a><span
+                                              class="pos-icon">
+                                              <span class="fa fa-headphones"></span>
+                                          </span>
+                                      </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="form-inner-cont pt-lg-5">
+
+                <form method="post" class="signin-form">
+                    {% csrf_token %}
+                    {% for d in data %}
+                    <div class="form-grids">
+                        <div class="form-input">
+                            <input type="text" name="fname" value="{{d.name}}" id="w3lName" placeholder="Full name" required="" disabled/>
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="email" id="w3lName" value="{{d.email}}" placeholder="Email" required="" disabled />
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="phone" id="w3lName" value="{{d.phone}}" placeholder="Phone Number" maxlength="10" disabled required="" />
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="quali"  id="w3lName" value="{{d.qualification}}" placeholder="Qualification" disabled required="" />
+                        </div>
+                        
+                        <div class="form-input" style="margin-top: -30px;">
+                            <textarea name="address" id="Message" placeholder="Address*" disabled  required="">{{d.address}}</textarea>
+                        </div>
+{% endfor %}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+{% if msg %}
+<script>
+   
+    alert('{{msg}}')
+</script>
+{% endif %}
+
+{% endblock %}

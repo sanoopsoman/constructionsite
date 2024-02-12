@@ -1,0 +1,82 @@
+{% extends 'commonbase.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+            <div class="heading">
+                <h2 class="title-subhny mb-2" style="margin-left: 450px;"><b>WORKER REGISTER</b></h2>
+                
+            </div>
+            <div class="form-inner-cont pt-lg-5">
+                <form method="post" class="signin-form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-grids">
+                        <div class="form-input">
+                            <input type="text" name="name" id="w3lName" placeholder="Full name" required="" />
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="email" id="w3lName" placeholder="Email" required="" />
+                        </div>
+                        <div class="form-input">
+                            photo:
+                            <input type="File" name="img" id="w3lName" placeholder="img" required="" />
+                        </div>
+                        <div class="form-input" style="margin-top: 25px;">
+                            
+                            <input type="text" name="phone" id="w3lName" placeholder="Phone Number" minlength="10" maxlength="10" pattern="[6789][0-9]{9}" required="" />
+                        </div>
+                        <div class="form-input">
+                            Select an ID Proof:
+                            <input type="File" name="img" id="w3lName" placeholder="Id proof" required="" />
+                        </div>
+                        <div class="form-input">
+                            <input type="number" name="age" id="w3lName" min="18" max="60" placeholder="Age" required="" />
+                        </div>
+
+                        <div class="form-input">
+                            <input type="number" name="wages" id="w3lName" placeholder="Wages" required="" />
+                        </div>
+
+                        <div class="form-input">
+                            <input type="password" name="password" id="w3lSubject" placeholder="Passsword"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required />
+                        </div>
+
+                        <select class="form-input" name="wtype" id="" style="height: 60px;border: none;padding: 10px;">
+                            <option value="" disabled selected>Select Type</option>
+                            <option value="electrician">Electrician</option>
+                            <option value="plumber">Plumber</option>
+                            <option value="mason">Mason</option>
+                            <option value="welder">Welder</option>
+                        </select>
+
+                        <div class="form-input" style="margin-top: -30px;">
+                            <textarea name="address" id="Message" placeholder="Address*" required=""></textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="text-center" style="margin-top: 40px;">
+                        <button class="btn btn-style btn-effect">REGISTER</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+
+{% if msg %}
+<script>
+   
+    alert('{{msg}}')
+</script>
+{% endif %}
+
+
+{% endblock %}

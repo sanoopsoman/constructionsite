@@ -1,0 +1,95 @@
+{% extends 'admin/adminbase.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="mx-auto text-center mb-5" style="max-width: 500px;">
+            <h2 class="text-primary text-uppercase"> contractor:</h2>
+            
+        </div>
+        <div class="row g-5">
+          
+            {% for i in contact %}
+            {% if i.constructor.is_active == 0 %}
+            <div class="col-lg-4 col-md-6">
+                <div class="row g-0">
+                    <div class="col-10">
+                        <div class="position-relative" style="box-shadow: 0px 0px 10px rgb(182, 192, 196)">
+                            <img class="img-fluid w-100" src="/static/media/{{i.img}}" style="height:250px; width:auto; border-radius:10px" alt="">
+                            <div class="position-absolute start-0 bottom-0 w-100 py-3 px-4" style="background: rgba(52, 173, 84, .85);">
+                                <center>
+                                    <h6 class="text-white">{{i.name}}</h6>
+                                    <h6 class="text-white">{{i.email}}</h6>
+                                    <h6 class="text-white">{{i.phone}}</h6>
+                               
+                                </center>
+                                
+
+                               
+                            </div>
+                            <br><br><br><br><br>
+                            <center>
+                                <a href="/actioncontractor?id={{i.constructor.id}}&status=1" class="btn btn-success" style="border-radius:5px;"><i class="fa fa-thumbs-up" aria-hidden="true"></i>Approve</a>
+                                <a href="/deletecontractor?id={{i.constructor.id}}" class="btn btn-danger" style="border-radius:5px;"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</a>
+                                </center>
+                           
+                        </div>
+                        
+                        <br>
+                        {% comment %} <center>
+                        <a href="/booklandrent?lid={{i.id}}&fid={{i.techid_id}}" class="btn btn-danger" style="border-radius:5px"><i class="fa fa-cart-plus" aria-hidden="true"></i>book</a><br><br>
+                        </center> {% endcomment %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor%}
+               
+               
+            </div>
+            <div class="mx-auto text-center mb-5" style="max-width: 500px;">
+                <h3 class="text-primary text-uppercase">approved contractor:</h3>
+                
+            </div>
+            <div class="row g-5">
+              
+                {% for i in contact %}
+                {% if i.constructor.is_active %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="row g-0">
+                        <div class="col-10">
+                            <div class="position-relative" style="box-shadow: 0px 0px 10px rgb(182, 192, 196)">
+                                <img class="img-fluid w-100" src="/static/media/{{i.img}}" style="height:250px; width:auto; border-radius:10px" alt="">
+                                <div class="position-absolute start-0 bottom-0 w-100 py-3 px-4" style="background: rgba(52, 173, 84, .85);">
+                                    <center>
+                                    <h6 class="text-white">{{i.name}}</h6>
+                                    <h6 class="text-white">{{i.email}}</h6>
+                                    <h6 class="text-white">{{i.phone}}</h6>
+                                    
+                                   
+                                    </center>
+                                   
+    
+                                   
+                                </div>
+                                <br><br><br><br><br>
+                                <center>
+                                    <a href="/actioncontractor?id={{i.constructor.id}}&status=0" class="btn btn-success" style="border-radius:5px;"><i class="fa fa-thumbs-up" aria-hidden="true"></i>Reject</a>
+                           
+                                    </center>
+                            </div>
+                            <br>
+                            {% comment %} <center>
+                            <a href="/booklandrent?lid={{i.id}}&fid={{i.techid_id}}" class="btn btn-danger" style="border-radius:5px"><i class="fa fa-cart-plus" aria-hidden="true"></i>book</a><br><br>
+                            </center> {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                    {% endfor %}
+                   
+                </div>
+        </div>
+    </div>
+
+{% endblock %}

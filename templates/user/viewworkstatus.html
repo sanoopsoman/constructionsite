@@ -1,0 +1,146 @@
+{% extends 'user/usercommon.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+        <div class="container">
+            <center><b>
+                    <h1>View User Requests</h1>
+                </b></center>
+                <br><br>
+           
+                    <table class="table table-bordered" cellpadding="10px" cellspacing="10px">
+                        <tr>
+                            <th>Name</th>
+
+                            <!-- <th>Email</th> -->
+                            <th>Work Type</th>
+                            <th>Phone</th>
+                            <th>Days</th>
+                            <th>Date</th>
+                            <th>Location</th>
+                            <th>Userid</th>
+                            <th>Request</th>
+                            <th>status</th>
+                          
+                        {% for i in data %}
+                        <tr>
+                            <td>{{i.user.name}}</td>
+                            <td>{{i.worktype}}</td>
+                            <td>{{i.phone}}</td>
+                            <td>{{i.days}}</td>
+                            <td>{{i.date}}</td>
+                            <td>{{i.location}}</td>
+                            <td>{{i.user.id}}</td>
+                            <td>{{i.request}}</td>
+                            <td>{{i.status}}</td>
+
+                            <!-- <td style="white-space: nowrap;"><a
+                                    href="/userrequestaction?id={{i.id}}&status=1">payment</a></td> -->
+                            
+
+                        </tr>
+
+                        {% endfor %}
+                    </table>
+        
+    <!-- //contacts-5-grid -->
+</div>
+<br><br>
+
+
+
+
+
+
+{% if msg %}
+<script>
+
+    alert('{{msg}}')
+</script>
+{% endif %}
+<!-- <div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3"> -->
+        <div class="container">
+            <center><b>
+                    <h1>Completed work request</h1>
+                </b></center>
+           <br><br>
+               
+             
+                                  
+                      <table class="table table-bordered" cellpadding="10px" cellspacing="10px">
+                        <tr>
+                            <th>workerName</th>
+                            <th>Work Type</th>
+                            <th>Phone</th>
+                            <th>Days</th>
+                            <th>Date</th>
+                            <th>Location</th>
+                            <th>UserName</th>
+                            <th>contractor name</th>
+                            <th>Daily Wages</th>
+                            <th>status</th>
+                            <th>Amount</th>
+                            <th>payment</th>
+                            <th colspan="2">Action</th>
+                           
+                        </tr>
+                        {% for i in data1 %}
+                        <tr>
+                            <td>{{i.wid.name}}</td>
+                            <td>{{i.wid.wtype}}</td>
+                            <td>{{i.rid.phone}}</td>
+                            <td>{{i.rid.days}}</td>
+                            <td>{{i.rid.date}}</td>
+                            <td>{{i.rid.location}}</td>
+                            <td>{{i.uid.name}}</td>
+                            <td>{{i.cid.name}}</td>
+                            <td>{{i.wid.wages}}</td>
+                            <td>{{i.status}}</td>
+                            <td id="res{{i.id}}"></td>
+                            <script>
+                                var day = "{{i.rid.days}}"
+                                var wage = "{{i.wid.wages}}"
+                                var total = day * wage
+                                document.getElementById("res{{i.id}}").innerHTML = total
+                            </script>
+                            <td>{{i.rid.payment}}</td>
+                        
+
+                            <td style="white-space: nowrap;"><a
+                                    href="/userpayment?uid={{i.uid.id}}&wid={{i.wid.id}}&cid={{i.cid.id}}">payment</a>
+                            </td>
+                            <td style="white-space: nowrap;"><a
+                                    href="/userfeedback?uid={{i.uid.id}}&wid={{i.wid.id}}&cid={{i.cid.id}}">Feedback</a>
+                            </td>
+
+                        </tr>
+                       
+                    
+                        {% endfor %}
+                    </table>
+               
+
+          
+            </div>
+        <!-- </div>
+    </div>
+    //contacts-5-grid -->
+
+
+
+
+
+
+
+{% if msg %}
+<script>
+
+    alert('{{msg}}')
+</script>
+{% endif %}
+
+{% endblock %}

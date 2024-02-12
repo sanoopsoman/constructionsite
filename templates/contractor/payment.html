@@ -1,0 +1,65 @@
+{% extends 'contractor/contractorbase.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+<div class="form-inner-cont pt-lg-5">
+    
+  
+        <h1><b>Add Feedback here</b></h1><br><br>
+        <div class="container" style="width:60%;">
+        <form method="post"  style="">
+            {% csrf_token %}
+           
+
+                <div class="form-group">
+                   <label>card number:</label>
+                   <input type="text" class="form-control" placeholder="enter the card number" min="16" max="16"><br>
+
+                </div>
+                <div class="form-grop">
+                    <label>card holder name:</label>
+                    <input type="text" class="form-control" placeholder="enter the card holder name"><br>
+                    
+                 </div>
+                 <div class="form-group">
+                    <label>cvv number:</label>
+                    <input type="text" class="form-control" placeholder="enter the cvv number" min="3" max="3"><br>
+                    
+                 </div>
+                 <div class="form-group">
+                    <label>date:</label>
+                    <input type="date" name="day"><br>
+                    
+                 </div>
+                 {% for i in payment1 %}
+                 <div class="form-group">
+                    
+                    <label>amount:</label>
+                    <input type="text" name="amount" id="res{{i.id}}" class="form-control"><br>
+                    <script>
+                        var day = "{{i.rid.days}}"
+                        var wage = "{{i.wid.wages}}"
+                        var total = day * wage
+                        document.getElementById("res{{i.id}}").value = total
+                    </script>
+
+                   
+                    
+                 </div>
+                 {% endfor %}
+
+           
+    <center>
+            <input type="submit" value="Make payment" class="btn btn-primary">
+        </center>
+                
+        </form>
+    
+</div>
+
+{% if msg %}
+<script>
+    alert("{{msg}}")
+</script>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'constbase.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+            <div class="heading">
+                <h2 class="title-subhny mb-2" style="margin-left: 400px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>VIEW FEEDBACKS</b></h2>
+            
+            </div>
+            
+            <div class="form-inner-cont pt-lg-5">
+
+                <form method="post" class="signin-form">
+                    {% csrf_token %}
+                    <table class="table table-bordered">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <!-- <th>Type</th> -->
+                        <th>Feedback</th>
+                    </tr>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{i.uid.name}}</td>
+                        
+                        <td>{{i.uid.email}}</td>
+                        <td>{{i.uid.phone}}</td>
+                        <td>{{i.uid.address}}</td>
+                        <!-- <td>{{i.wtype}}</td> -->
+                        <td>{{i.msg}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+
+
+
+
+
+{% if msg %}
+<script>
+   
+    alert('{{msg}}')
+</script>
+{% endif %}
+
+{% endblock %}

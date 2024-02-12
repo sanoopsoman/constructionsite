@@ -1,0 +1,45 @@
+{% extends 'user/usercommon.html' %}
+{% load static %}
+{% block content %}
+<br>
+<center><h1><b>Send Request</b></h1></center>
+
+<div class="form-inner-cont pt-lg-5">
+    <form method="post" class="signin-form">
+        {% csrf_token %}
+        <div class="form-grids">
+
+            <select class="form-input" name="worker" id="" style="height: 60px;border: none; padding: 10px;border-radius: 10px;">
+                <option value="" disabled selected>Select Type</option>
+                <option value="electrician">Electrician</option>
+                <option value="plumber">Plumber</option>
+                <option value="mason">Mason</option>
+                <option value="welder">Welder</option>
+            </select>
+           
+            <div class="form-input">
+                <input type="number" name="days" id="w3lSubject" placeholder="No of Days " required />
+            </div>
+            <div class="form-input">
+                <input type="date" name="date" min="{{today}}" id="w3lSubject" placeholder="Date " required />
+            </div>
+            <div class="form-input">
+                <input type="text" name="location" id="w3lSubject" placeholder="Location " required />
+            </div>
+            <div class="form-input">
+                <input type="text" name="phone" id="w3lSubject" maxlength="10" minlength="10" pattern="[6789][0-9]{9}" placeholder="Mobile No " required />
+            </div>
+            <div class="form-input" style="margin-top: -30px;">
+                <textarea name="req" id="Message" placeholder="Request" required="" ></textarea>
+            </div>
+
+        </div>
+
+        <div class="text-center" style="margin-top: 40px;">
+            <button type="submit" class="btn btn-style btn-effect">Send</button>
+        </div>
+    </form>
+</div><br><br>
+
+
+    {% endblock %}

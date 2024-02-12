@@ -1,0 +1,111 @@
+{% extends 'contractor/contractorbase.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+           <center><b><h1>View User Requests</h1></b></center>
+            <div class="form-inner-cont pt-lg-5">
+
+                <form method="post" class="signin-form">
+                    {% csrf_token %}
+                    <table class="table table-bordered">
+                    <tr>
+                        <th>Name</th>
+                        
+                        <!-- <th>Email</th> -->
+                        <th>Work Type</th>
+                        <th>Phone</th>
+                        <th>Days</th>
+                        <th>Date</th>
+                        <th>Location</th>
+                        <th>Userid</th>
+                        <th>Request</th>
+                        <th colspan="2">Action</th>
+                    </tr>
+                    {% for i in view %}
+                    {% if i.status == "pending" %}
+                    <tr>
+                        <td>{{i.user.name}}</td>
+                        <td>{{i.worktype}}</td>
+                        <td>{{i.phone}}</td>
+                        <td>{{i.days}}</td>
+                        <td>{{i.date}}</td>
+                        <td>{{i.location}}</td>
+                        <td>{{i.user.id}}</td>
+                        <td>{{i.request}}</td>
+                   
+ 
+                        <td style="white-space: nowrap;"><a href="/userrequestaction?id={{i.id}}&status=accepted">Accept</a></td>
+                        <td style="white-space: nowrap;"><a href="/ontractordeleteworkrequest?rid={{i.id}}">delete</a></td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+
+
+<div class="w3l-contact-10 py-5" id="contact">
+        <div class="container">
+           <center><b><h1>Accepted Requests</h1></b></center>
+            <div class="form-inner-cont pt-lg-5">
+
+                <form method="post" class="signin-form">
+                    {% csrf_token %}
+                    <table class="table table-bordered">
+                    <tr>
+                        <th>Name</th>
+                        
+                        <!-- <th>Email</th> -->
+                        <th>Work Type</th>
+                        <th>Phone</th>
+                        <th>Days</th>
+                        <th>Date</th>
+                        <th>Location</th>
+                        <th>Userid</th>
+                        <th>Request</th>
+                        <th colspan="2">Action</th>
+                    </tr>
+                    {% for i in view %}
+                    {% if i.status == "accepted" %}
+                    <tr>
+                        <td>{{i.user_id.}}</td>
+                        <td>{{i.worktype}}</td>
+                        <td>{{i.phone}}</td>
+                        <td>{{i.days}}</td>
+                        <td>{{i.date}}</td>
+                        <td>{{i.location}}</td>
+                        <td>{{i.uid_id}}</td>
+                        <td>{{i.request}}</td>
+                   
+                        <td style="white-space: nowrap;"><a href="/contractorviewworker?rid={{i.id}}&uid={{i.user.id}}">Allot Workers</a></td>
+                        <td style="white-space: nowrap;"><a href="/userrequestaction?id={{i.id}}&status=pending">Reject</a></td>
+                       
+                      
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </table>
+                </form>
+            </div>
+        </div>
+</div>
+
+
+
+{% if msg %}
+<script>
+   
+    alert('{{msg}}')
+</script>
+{% endif %}
+
+{% endblock %}

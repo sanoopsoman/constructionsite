@@ -1,0 +1,83 @@
+{% extends 'constbase.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+            <div class="heading">
+                <h6 class="title-subhny mb-2"></h6>
+                <h3 class="title-w3l mb-2"></h3>
+                <p class="mb-5"></p>
+            </div>
+            <div class="contacts-5-grid-main mb-5">
+                <div class="contacts-5-grid mb-lg-5">
+                    <div class="map-content-5">
+                        <section class="tab-content">
+                            <div class="container">
+                                <div class="d-grid grid-col-2">
+                                    <div class="contact-type">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="form-inner-cont pt-lg-5">
+                <form method="post" class="signin-form">
+                    {% csrf_token %}
+                    <div class="form-grids">
+
+                        <select class="form-input" name="t2" id="" style="height: 60px;border: none; padding: 10px;border-radius: 10px;">
+                            <option value="" disabled selected>Select Type</option>
+                            <option value="electrician">Electrician</option>
+                            <option value="plumber">Plumber</option>
+                            <option value="mason">Mason</option>
+                            <option value="welder">Welder</option>
+                        </select>
+                       
+                        <div class="form-input">
+                            <input type="number" name="t4" id="w3lSubject" placeholder="No of Days " required />
+                        </div>
+                        <div class="form-input">
+                            <input type="date" name="t3" min="{{today}}" id="w3lSubject" placeholder="Date " required />
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="t6" id="w3lSubject" placeholder="Location " required />
+                        </div>
+                        <div class="form-input" style="margin-top: -30px;">
+                            <textarea name="t1" id="Message" placeholder="Request" required=""></textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="text-center" style="margin-top: 40px;">
+                        <button type="submit" class="btn btn-style btn-effect">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+
+
+
+
+
+
+
+
+{% if msg %}
+<script>
+
+    alert('{{msg}}')
+</script>
+{% endif %}
+
+
+{% endblock %}

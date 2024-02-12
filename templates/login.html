@@ -1,0 +1,43 @@
+{% extends 'commonbase.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+            
+            <div class="form-inner-cont pt-lg-5" >
+                <center><h2>Login </h2></center><br><br>
+                <form method="post" class="signin-form">
+                    
+                    {% csrf_token %}
+                    <div class="form-grids">
+                        
+                        <div class="form-input">
+                            <input type="text" name="email" id="w3lName" placeholder="Username" required="" />
+                        </div>
+                        <div class="form-input">
+                            <input type="password" name="password" id="w3lSubject" placeholder="Passsword " required />
+                        </div>
+
+                    </div>
+
+                    <div class="text-center" style="margin-top: 40px;">
+                        <button class="btn btn-style btn-effect">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+{% if msg %}
+<script>
+   
+    alert('{{msg}}')
+</script>
+{% endif %}
+{% endblock %}

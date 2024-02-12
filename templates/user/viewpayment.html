@@ -1,0 +1,66 @@
+{% extends 'user/usercommon.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+            <center><b>
+                    <h1>View User Payment status</h1>
+                </b></center>
+            <div class="form-inner-cont pt-lg-5">
+
+                <form method="post" class="signin-form">
+                    {% csrf_token %}
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>user Name</th>
+
+                            <!-- <th>Email</th> -->
+                            <th>Work Type</th>
+                            <th>Worker name</th>
+                            <th>contractor name</th>
+                            <th>amount</th>
+                            <th>status</th>
+                            {% comment %} <th>Action</th> {% endcomment %}
+                        </tr>
+                        {% for i in payment %}
+                        <tr>
+                            <td>{{i.uid.name}}</td>
+                            <td>{{i.wid.wtype}}</td>
+                            <td>{{i.wid.name}}</td>
+                            <td>{{i.cid.name}}</td>
+                            <td>{{i.amount}}</td>
+                            <td>{{i.status}}</td>
+
+
+                            {% comment %} <td style="white-space: nowrap;"><a
+                                    href="/userrequestaction?id={{i.id}}&status=1">payment</a></td>
+                            <td style="white-space: nowrap;"><a
+                                    href="/userrequestaction?id={{i.id}}&status=1">Feedback</a></td> {% endcomment %}
+
+                        </tr>
+
+                        {% endfor %}
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+
+
+
+
+
+
+{% if msg %}
+<script>
+
+    alert('{{msg}}')
+</script>
+{% endif %}
+{% endblock %}

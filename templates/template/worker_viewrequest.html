@@ -1,0 +1,155 @@
+{% extends 'workerbase.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+            <div class="heading">
+                <h2 class="title-subhny mb-2" style="margin-left: 400px;">WORK REQUEST</h2>
+                <h3 class="title-w3l mb-2"></h3>
+                <p class="mb-5"></p>
+            </div>
+            <div class="contacts-5-grid-main mb-5">
+                <div class="contacts-5-grid mb-lg-5">
+                    <div class="map-content-5">
+                        <section class="tab-content">
+                            <div class="container">
+                                <div class="d-grid grid-col-2">
+                                    <div class="contact-type">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <form action="/searchresult/" method="post">
+                {% csrf_token %}
+                <div class="form-input" style="margin-left: 250px;width: 300px;display: flex;">
+                    <select name="location" id="" class="form-select form-select-lg" required>
+                        <option value="" disabled selected>Select Location</option>
+                        {% for i in data2 %}
+                        <option value="{{i.Location}}">{{i.Location}}</option>
+                        {% endfor %}
+
+                    </select>
+                    <button type="submit" class="btn btn-danger" style="margin-left: 10px;height: 50px;">
+                        Search
+                    </button>
+                </div>
+            </form>
+
+            <div class="form-inner-cont pt-lg-5">
+
+                <form method="post" class="signin-form">
+                    {% csrf_token %}
+                    <table class="table">
+                        <tr>
+                            <th>Location</th>
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th>Request</th>
+                            <th>No Of Days</th>
+                            <th>Action</th>
+                            <th>Feedback</th>
+                        </tr>
+                        {% for d in data %}
+                        <tr>
+                            <td>{{d.Location}}</td>
+                            <td>{{d.typeofworker}}</td>
+                            <td>{{d.date}}</td>
+                            <td>{{d.request}}</td>
+                            <td>{{d.noofdays}}</td>
+                            <td><a href="/Request_workers?rid={{d.rid}}">Accept</a></td>
+                            <td><a href="/viewcontractorfeedback?cid={{d.cid_id}}">View Feedbacks</a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+
+
+
+<!-- VIEW ACCEPTED REQUESTS -->
+
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+            <div class="heading">
+                <h2 class="title-subhny mb-2" style="margin-left: 400px;">ACCEPTED REQUESTS</h2>
+                <h3 class="title-w3l mb-2"></h3>
+                <p class="mb-5"></p>
+            </div>
+            <div class="contacts-5-grid-main mb-5">
+                <div class="contacts-5-grid mb-lg-5">
+                    <div class="map-content-5">
+                        <section class="tab-content">
+                            <div class="container">
+                                <div class="d-grid grid-col-2">
+                                    <div class="contact-type">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="form-inner-cont pt-lg-5">
+
+                <form method="post" class="signin-form">
+                    {% csrf_token %}
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Location</th>
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th>No Of Days</th>
+                            <th>Action</th>
+                            <th>Status</th>
+                        </tr>
+                        {% for d in data1 %}
+                        <tr>
+                            <td>{{d.Location}}</td>
+                            <td>{{d.typeofworker}}</td>
+                            <td>{{d.date}}</td>
+                            <td>{{d.noofdays}}</td>
+                            <td><a href="/workeraddfeedback?cid={{d.cid_id}}">Add Feedback</a></td>
+                            <td><a href="/viewstatus?rrid={{d.rid}}">View Status</a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+
+
+{% if msg %}
+<script>
+
+    alert('{{msg}}')
+</script>
+{% endif %}
+
+
+
+{% if wstatus %}
+<script>
+    alert("{{wstatus}}")
+</script>
+{% endif %}
+
+{% endblock %}

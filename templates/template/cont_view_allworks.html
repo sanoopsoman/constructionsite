@@ -1,0 +1,51 @@
+{% extends 'constbase.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+           <center><b><h1>Completed Works</h1></b></center>
+            <div class="form-inner-cont pt-lg-5">
+
+                <form method="post" class="signin-form">
+                    {% csrf_token %}
+                    <table class="table table-bordered">
+                    <tr>
+                        <th>Name</th>
+                        
+                        <!-- <th>Email</th> -->
+                        <th>Work Type</th>
+                        <th>Phone</th>
+                        <th>Days</th>
+                        <th>Date</th>
+                        <th>Location</th>
+                        <th>Userid</th>
+                        <th>Request</th>
+                        <th>Action</th>
+                    </tr>
+                    {% for d in view %}
+                    <tr>
+                        <td>{{d.uname}}</td>
+                        <td>{{d.worktype}}</td>
+                        <td>{{d.uphone}}</td>
+                        <td>{{d.days}}</td>
+                        <td>{{d.date}}</td>
+                        <td>{{d.location}}</td>
+                        <td>{{d.uid_id}}</td>
+                        <td>{{d.req}}</td>
+
+                        <td><a>Completed</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+
+{% endblock %}

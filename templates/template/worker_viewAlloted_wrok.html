@@ -1,0 +1,50 @@
+{% extends 'workerbase.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+            <div class="heading">
+                <h2 class="title-subhny mb-2" style="margin-left: 400px;">ACCEPTED REQUESTS</h2>
+            </div>
+            
+            <div class="form-inner-cont pt-lg-5">
+
+                <form method="post" class="signin-form">
+                    {% csrf_token %}
+                    <table class="table table-bordered" style="text-align: center;">
+                        <tr>
+                            <th>User name</th>
+                            <th>Work type</th>
+                            <th>Cid</th>
+                            <th>No Of Days</th>
+                            <th>Wages</th>
+                            <th>Status</th>
+                            <th colspan="2">Action</th>
+                        </tr>
+                        {% for d in viewreq %}
+                        <tr>
+                            <td>{{d.uid.name}}</td>
+                            <td>{{d.work}}</td>
+                            <td>{{d.cid}}</td>
+                            <td>{{d.days}}</td>
+                            <td>{{d.wages}}</td>
+                            <td>{{d.payment}}</td>
+                            <td><a href="/worker_accept_work?id={{d.id}}">Accept</a></td>
+                            <td><a href="/worker_update_status?update={{d.id}}">Update Status</a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'workerbase.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+            <div class="heading">
+                <h2 class="title-subhny mb-2" style="margin-left: 450px;">WORKER PROFILE</h2>
+                <h3 class="title-w3l mb-2"></h3>
+                <p class="mb-5"></p>
+            </div>
+            <div class="contacts-5-grid-main mb-5">
+                <div class="contacts-5-grid mb-lg-5">
+                    <div class="map-content-5">
+                        <section class="tab-content">
+                            <div class="container">
+                                <div class="d-grid grid-col-2">
+                                    <div class="contact-type">
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="form-inner-cont pt-lg-5">
+                <form method="post" class="signin-form">
+                    {% csrf_token %}
+                    {% for d in data %}
+                    <div class="form-grids">
+                        <div class="form-input">
+                            <input type="text" name="name" id="w3lName" value="{{d.name}}" placeholder="Full name"
+                                required="" disabled />
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="email" id="w3lName" value="{{d.email}}" placeholder="Email"
+                                required="" disabled />
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="phone" value="{{d.phone}}" id="w3lName" placeholder="Phone Number"
+                                disabled required="" />
+                        </div>
+
+                        <div class="form-input">
+                            <input type="password" name="password" id="w3lSubject" disabled placeholder="Passsword "
+                                required />
+                        </div>
+
+                        <select class="form-input" name="wtype" id="" style="height: 60px;">
+                            <option value="" disabled selected>{{d.wtype}}</option>
+
+                        </select>
+
+                        <div class="form-input" style="margin-top: -30px;">
+                            <textarea name="address" id="Message" placeholder="Address*" disabled
+                                required="">{{d.address}}</textarea>
+                        </div>
+
+                    </div>
+                    {% endfor %}
+                    <!-- <div class="text-center" style="margin-top: 40px;">
+                        <button class="btn btn-style btn-effect">REGISTER</button>
+                    </div> -->
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+
+{% if msg %}
+<script>
+
+    alert('{{msg}}')
+</script>
+{% endif %}
+
+
+{% endblock %}

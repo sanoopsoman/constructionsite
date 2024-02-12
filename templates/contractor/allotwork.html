@@ -1,0 +1,74 @@
+{% extends 'contractor/contractorbase.html' %}
+{% load static %}
+{% block content %}
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+            <div class="heading">
+                <h2 class="title-subhny mb-2" style="margin-left: 450px;"><b>WORKER REGISTER</b></h2>
+                
+            </div>
+            <div class="form-inner-cont pt-lg-5">
+                <form method="post" class="signin-form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-grids">
+                        <div class="form-input">
+                            <label>worker_id:</label>
+                            <input type="text" name="wid" id="w3lName" placeholder="Full name" required="" />
+                        </div>
+                        <div class="form-input">
+                            <label>User_id:</label>
+                            <input type="text" name="uid" id="w3lName" placeholder="user_id" required="" />
+                        </div>
+                       
+                        <div class="form-input" style="margin-top: 25px;">
+                            <label>work Request_id: </label>
+                            
+                            <input type="text" name="rid" id="w3lName" placeholder="Phone Number" required="" />
+                        </div>
+                       
+                        <div class="form-input">
+                            <label>contractor_id:</label>
+                            <input type="text" name="uid" id="w3lName" min="18" max="60" placeholder="Age" required="" />
+                        </div>
+
+                        {% comment %} <div class="form-input">
+                            <input type="number" name="wages" id="w3lName" placeholder="Wages" required="" />
+                        </div>
+
+                        <div class="form-input">
+                            <input type="password" name="password" id="w3lSubject" placeholder="Passsword " required />
+                        </div>
+
+                        <select class="form-input" name="wtype" id="" style="height: 60px;border: none;padding: 10px;">
+                            <option value="" disabled selected>Select Type</option>
+                            <option value="electrician">Electrician</option>
+                            <option value="plumber">Plumber</option>
+                            <option value="mason">Mason</option>
+                            <option value="welder">Welder</option>
+                        </select>
+
+                        <div class="form-input" style="margin-top: -30px;">
+                            <textarea name="address" id="Message" placeholder="Address*" required=""></textarea>
+                        </div>
+
+                    </div> {% endcomment %}
+
+                    <div class="text-center" style="margin-top: 40px;">
+                        <button class="btn btn-style btn-effect">Allot Work</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+
+{% if msg %}
+<script>
+   
+    alert('{{msg}}')
+</script>
+{% endif %}
+
+{% endblock%}

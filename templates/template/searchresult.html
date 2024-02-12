@@ -1,0 +1,66 @@
+{% extends 'workerbase.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+            <div class="heading">
+                <h2 class="title-subhny mb-2" style="margin-left: 400px;">SEARCH RESULTS</h2>
+                <h3 class="title-w3l mb-2"></h3>
+                <p class="mb-5"></p>
+            </div>
+            <div class="contacts-5-grid-main mb-5">
+                <div class="contacts-5-grid mb-lg-5">
+                    <div class="map-content-5">
+                        <section class="tab-content">
+                            <div class="container">
+                                <div class="d-grid grid-col-2">
+                                    <div class="contact-type">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="form-inner-cont pt-lg-5">
+
+                <form method="post" class="signin-form">
+                    {% csrf_token %}
+                    <table class="table">
+                        <tr>
+                            <th>Location</th>
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th>Request</th>
+                            <th>No Of Days</th>
+                            <th>Action</th>
+                        </tr>
+                        {% for d in search %}
+                        <tr>
+                            <td>{{d.Location}}</td>
+                            <td>{{d.typeofworker}}</td>
+                            <td>{{d.date}}</td>
+                            <td>{{d.request}}</td>
+                            <td>{{d.noofdays}}</td>
+                            <td><a href="/Request_workers?rid={{d.rid}}">Accept</a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+
+
+{% endblock %}

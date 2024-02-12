@@ -1,0 +1,125 @@
+{% extends 'usercommon.html' %}
+{% load static %}
+{% block header %}
+
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+            <div class="heading">
+                <h2 class="title-subhny mb-2" style="margin-left: 400px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Work Status</b></h2>
+
+            </div>
+
+            <div class="form-inner-cont pt-lg-5">
+
+                <form method="post" class="signin-form">
+                    {% csrf_token %}
+                    <table class="table table-bordered" style="text-align: center;">
+                        <tr>
+                            <th>Contarctor ID</th>
+                            <th>Work Type</th>
+                            <th>Days</th>
+                            <th>Location</th>
+                            <th>Disc</th>
+                            <th>Status</th>
+                            <th>Wages</th>
+                            <th>Work Status</th>
+                            <th>Action</th>
+                        </tr>
+                        {% for d in data %}
+                        <tr>
+                            <td>{{d.cid_id}}</td>
+                            <td>{{d.worktype}}</td>
+                            <td>{{d.days}}</td>
+                            <td>{{d.location}}</td>
+                            <td>{{d.req}}</td>
+                            <td>{{d.status}}</td>
+                            {% endfor %}
+                            <!-- <td>{{d.wtype}}</td> -->
+                            {% for i in data1 %}
+                            <td>{{i.wages}}</td>
+                            <td style="white-space: nowrap;"><a style="color: green;">{{i.work_status}}</a></td>
+                            {% if i.work_status == 'Accepted' %}
+                            <td style="white-space: nowrap;"><a href="/payment1?id={{i.id}}">PAY</a>
+                            </td>
+                            {% else %}
+                            <td style="white-space: nowrap;">
+                                <p>Processing</p>
+                                {% endif %}
+                            </td>
+
+                            {% endfor %}
+                        </tr>
+
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+
+
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+            <div class="heading">
+                <h2 class="title-subhny mb-2" style="margin-left: 400px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Work Status</b></h2>
+
+            </div>
+
+            <div class="form-inner-cont pt-lg-5">
+
+                <form method="post" class="signin-form">
+                    {% csrf_token %}
+                    <table class="table table-bordered" style="text-align: center;">
+                        <tr>
+                            <th>Contarctor ID</th>
+                            <th>Work Type</th>
+                            <th>Days</th>
+                            <th>Location</th>
+                            <th>Disc</th>
+                            <th>Status</th>
+                            <!-- <th>Wages</th> -->
+                            <!-- <th>Work Status</th> -->
+                            <!-- <th>Action</th> -->
+                            <th>Feedback</th>
+                        </tr>
+                        {% for d in view %}
+                        <tr>
+                            <td>{{d.cid_id}}</td>
+                            <td>{{d.worktype}}</td>
+                            <td>{{d.days}}</td>
+                            <td>{{d.location}}</td>
+                            <td>{{d.req}}</td>
+                            <td>{{d.status}}</td>
+                            <!-- <td>{{d.payment}}</td> -->
+                            <!-- <td>{{d.work_status}}</td> -->
+                            <!-- <td>{{d.work_status}}</td> -->
+                            <td><a href="/useraddfeedback?cid={{d.cid_id}}&wid={{d.worktype}}">Add Feedback</a></td>
+                            </tr>
+                        {% endfor %}
+                            <!-- <td>{{d.wtype}}</td> -->
+
+                        <!-- {% for i in view1 %}
+
+                            <td>{{i.wages}}</td>
+                            <td style="white-space: nowrap;"><a style="color: green;">{{i.work_status}}</a></td>
+                            
+                            <td style="white-space: nowrap;">Paid</td>
+                            <td style="white-space: nowrap;"><a href="/useraddfeedback?cid={{i.cid}}&wid={{i.wid}}">Add Feedback</a></td>
+
+                        {% endfor %} -->
+                        </tr>
+
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+
+{% endblock %}

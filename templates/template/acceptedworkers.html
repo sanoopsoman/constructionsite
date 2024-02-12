@@ -1,0 +1,148 @@
+{% extends 'constbase.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+            <div class="heading">
+                <h2 class="title-subhny mb-2" style="margin-left: 400px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ACCEPTED WORKERS</h2>
+                <h3 class="title-w3l mb-2"></h3>
+                <p class="mb-5"></p>
+            </div>
+            <div class="contacts-5-grid-main mb-5">
+                <div class="contacts-5-grid mb-lg-5">
+                    <div class="map-content-5">
+                        <section class="tab-content">
+                            <div class="container">
+                                <div class="d-grid grid-col-2">
+                                    <div class="contact-type">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+            {% if wdata %}
+
+            <div class="form-inner-cont pt-lg-5">
+
+                <form method="post" class="signin-form">
+                    {% csrf_token %}
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Type</th>
+                            <th>Wages</th>
+                            <th colspan="2">Action</th>
+                        </tr>
+                        {% for d in wdata %}
+                        <tr>
+                            <td>{{d.name}}</td>
+
+                            <td>{{d.email}}</td>
+                            <td>{{d.phone}}</td>
+                            <td>{{d.address}}</td>
+                            <td>{{d.wtype}}</td>
+                            <td>{{d.wages}}</td>
+                            <td><a href="/approveworker?wid={{d.id}}">Approve</a></td>
+                            <td><a href="/rejectworker?wid={{d.id}}">Reject</a></td>
+                            <td><a href="/viewworkerfeedback?wid={{d.id}}">ViewFeedback</a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    {% else %}
+                    <h1>No Data</h1>
+
+                    {% endif %}
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+
+
+
+
+
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+            <div class="heading">
+                <h2 class="title-subhny mb-2" style="margin-left: 400px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;APPROVED WORKERS</h2>
+                <h3 class="title-w3l mb-2"></h3>
+                <p class="mb-5"></p>
+            </div>
+            <div class="contacts-5-grid-main mb-5">
+                <div class="contacts-5-grid mb-lg-5">
+                    <div class="map-content-5">
+                        <section class="tab-content">
+                            <div class="container">
+                                <div class="d-grid grid-col-2">
+                                    <div class="contact-type">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="form-inner-cont pt-lg-5">
+
+                <form method="post" class="signin-form">
+                    {% csrf_token %}
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Type</th>
+                            <th>Wages</th>
+                        </tr>
+                        {% for d in wadata %}
+                        <tr>
+                            <td>{{d.name}}</td>
+
+                            <td>{{d.email}}</td>
+                            <td>{{d.phone}}</td>
+                            <td>{{d.address}}</td>
+                            <td>{{d.wtype}}</td>
+                            <td>{{d.wages}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+
+
+
+
+
+
+
+{% if msg %}
+<script>
+
+    alert('{{msg}}')
+</script>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'usercommon.html' %}
+
+{% load static %}
+
+{% block header %}
+
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+            <div class="heading">
+                <h2 class="title-subhny mb-2" style="margin-left: 400px;">CONTRACTOR REGISTER</h2>
+            </div>
+            <div class="form-inner-cont pt-lg-5">
+
+                <form method="post" class="signin-form">
+                    {% csrf_token %}
+                    <table class="table">
+                    <tr>
+                        <th>ID</th>
+                        <th>Work</th>
+                        <th>Image</th>
+                    </tr>
+                    {% for d in view %}
+                    <tr>
+                        <td>{{d.acid}}</td>
+                        <td>{{d.work}}</td>
+                        <td><img src="/static{{d.image}}" width="200px"></td>
+                        <!-- <td><a href="/wdelete?acid={{d.acid}}">Delete</a></td> -->
+                    </tr>
+                    {% endfor %}
+                </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+
+{% if msg %}
+<script>
+   
+    alert('{{msg}}')
+</script>
+{% endif %}
+
+{% endblock %}

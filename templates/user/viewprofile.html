@@ -1,0 +1,120 @@
+{% extends 'user/usercommon.html' %}
+{% load static %}
+{% block content %}
+
+
+<!-- <div class="container-fluid py-5">
+    <div class="container">
+        <div class="mx-auto text-center mb-5" style="max-width: 500px;">
+            <h2 class="text-primary text-uppercase">profile:</h2>
+
+        </div>
+        <div class="row g-5">
+
+            {% for i in use %}
+            <div class="col-lg-4 col-md-6">
+                <div class="row g-0">
+                    <div class="col-10">
+                        <div class="position-relative" style="box-shadow: 0px 0px 10px rgb(182, 192, 196)">
+                            <img class="img-fluid w-100" src="/static/media/{{i.img}}"
+                                style="height:250px; width:auto; border-radius:10px" alt="imggg">
+                            <div class="position-absolute start-0 bottom-0 w-100 py-3 px-4"
+                                style="background: rgba(167, 197, 175, 0.85);">
+                                <center>
+                                    <span>name:{{i.name}}</span><br>
+                                    <span>email:{{i.name}}</span><br>
+                                    <span>mob:{{i.name}}</span><br>
+                                    <span>wage:{{i.name}}</span><br>
+                                    <span>adress:{{i.name}}</span><br>
+
+
+
+                                </center>
+
+
+                            </div>
+                            <br><br><br><br><br><br><br><br>
+                            <center>
+                                <a href="/booklandrent?lid={{i.id}}&fid={{i.techid_id}}" class="btn btn-danger"
+                                    style="border-radius:5px"><i class="fa fa-cart-plus"
+                                        aria-hidden="true"></i>book</a><br><br>
+                            </center> 
+                        </div>
+                        <br>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            {% endfor %}
+            
+        </div>
+    </div>
+</div>
+<br>
+<br> -->
+
+
+<br>
+<br>
+    <header>
+        <h1>User Profile</h1>
+    </header>
+
+    <div class="profile-container" style="background-color: aquamarine;">
+        {% for i in  update %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="profile-image">
+            <img src="/static/media/{{i.img}}" alt="Profile Picture">
+        </div>
+        <input type="file" name="img">
+        <div class="">
+           
+                
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text"  value="{{i.name}}" name="Uname" class="form-control" placeholder="User Name">
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" value="{{i.email}}" name="email" class="form-control" placeholder="email">
+                </div>
+                
+                <div class="form-group">
+                    <label>Phone:</label>
+                    <input type="number" value="{{i.phone}}" name="phone" class="form-control" placeholder="phone">
+                </div>
+                <div class="form-group">
+                    <label>Daily Wage:</label>
+                    <input type="number"  value="{{i.wages}}" name="wage" class="form-control" placeholder="wage">
+                </div>
+                <div class="form-group">
+                    <label>Age:</label>
+                    <input type="number" value="{{i.age}}" name="age" class="form-control" placeholder="age">
+                </div>
+                <div class="form-group">
+                    <label>Address:</label>
+                    <input type="text" value="{{i.address}}" name="address" class="form-control" placeholder="address">
+                </div>
+                <center>
+                <input type="submit" value="submit" class="btn btn-primary ">
+            </center>
+            </form>
+
+            
+            <!-- Add more profile information as needed -->
+        </div>
+        {% endfor %}
+        <center>
+        <!-- <a href="/updateuser" class="btn btn-primary" style="border-radius:10px;">Update</a> -->
+        </center>
+    </div>
+
+
+
+
+
+
+{% endblock %}

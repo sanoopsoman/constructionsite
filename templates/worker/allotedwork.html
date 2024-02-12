@@ -1,0 +1,171 @@
+{% extends 'worker/workerbase.html' %}
+{% load static %}
+{% block content %}
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="form-41-mian py-md-5 py-3">
+        <div class="container">
+           <center><b><h1>View work Requests</h1></b></center>
+            <div class="form-inner-cont pt-lg-5">
+
+              
+                    <table class="table table-bordered">
+                    <tr>
+                        
+                        
+                        <!-- <th>Email</th> -->
+                        <th>worker Name</th>
+                        <th>Work Type</th>
+                        <th>Phone</th>
+                        <th>Days</th>
+                        <th>Date</th>
+                        <th>Location</th>
+                        <th>UserName</th>
+                        <th>contractor Name</th>
+                      
+                        <th>status</th>
+                        <th>Action</th>
+                    </tr>
+                    {% for i in worker %}
+                    {% if i.status == "process" %}
+                    <tr>
+                        <td>{{i.wid.name}}</td>
+                        <td>{{i.rid.worktype}}</td>
+                        <td>{{i.rid.phone}}</td>
+                        <td>{{i.rid.days}}</td>
+                        <td>{{i.rid.date}}</td>
+                        <td>{{i.rid.location}}</td>
+                        <td>{{i.uid.name}}</td>
+                        <td>{{i.cid.name}}</td>
+                        <td>{{i.status}}</td>
+                   
+ 
+                        <td style="white-space: nowrap;"><a href="/assignedaction?id={{i.id}}&status=accepted">Accept Work</a></td>
+                        <td style="white-space: nowrap;"><a href="/workerdeleterequest?id={{i.id}}&status=accepted">Accept Work</a></td>
+                        
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                
+                </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //contacts-5-grid -->
+</div>
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="container">
+       <center><b><h1>Accepted Work:</h1></b></center>
+        <div class="form-inner-cont pt-lg-5">
+
+            
+                <table class="table table-bordered">
+                <tr>
+                 
+                    
+                    <!-- <th>Email</th> -->
+                    <th>worker Name</th>
+                    <th>Work Type</th>
+                    <th>Phone</th>
+                    <th>Days</th>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>UserName</th>
+                    <th>Contractor Name</th>
+                    <th>amount</th>
+                     <th colspan="2">Action</th>
+                </tr>
+                {% for i in worker %}
+                {% if i.status == "accepted" %}
+                <tr>
+                    <td>{{i.wid.name}}</td>
+                    <td>{{i.rid.worktype}}</td>
+                    <td>{{i.rid.phone}}</td>
+                    <td>{{i.rid.days}}</td>
+                    <td>{{i.rid.date}}</td>
+                    <td>{{i.rid.location}}</td>
+                    <td>{{i.uid.name}}</td>
+                    <td>{{i.cid.name}}</td>
+                    <td>{{i.amount}}</td>
+                    
+               
+                    <td style="white-space: nowrap;"><a href="/assignedaction?id={{i.id}}&status=work done">work Done</a></td>
+                    <td style="white-space: nowrap;"><a href="/assignedaction?id={{i.id}}&status=pending">reject</a></td>
+                   
+                  
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </table>
+           
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="w3l-contact-10 py-5" id="contact">
+    <div class="container">
+       <center><b><h1>Completed Work:</h1></b></center>
+        <div class="form-inner-cont pt-lg-5">
+
+           
+                <table class="table table-bordered">
+                <tr>
+                
+                    
+                    <!-- <th>Email</th> -->
+                    <th>worker Name</th>
+                    <th>Work Type</th>
+                    <th>Phone</th>
+                    <th>Days</th>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>UserName</th>
+                    <th>Contractor Name</th>
+                    <th>payment</th>
+                    <th>status</th>
+                    <th>Action</th>
+                </tr>
+                {% for i in worker %}
+                {% if i.status == "work done" %}
+                <tr>
+                    <td>{{i.wid.name}}</td>
+                    <td>{{i.rid.worktype}}</td>
+                    <td>{{i.rid.phone}}</td>
+                    <td>{{i.rid.days}}</td>
+                    <td>{{i.rid.date}}</td>
+                    <td>{{i.rid.location}}</td>
+                    <td>{{i.uid.name}}</td>
+                    <td>{{i.cid.name}}</td>
+                    <td>{{i.rid.payment}}</td>
+                    <td>{{i.rid.status}}</td>
+                    {% comment %} <td style="white-space: nowrap;"><a href="/allotedwork?id={{i.id}}&status=work done">work Done</a></td> {% endcomment %}
+                    <td style="white-space: nowrap;"><a href="/workerfeedback?wid={{i.wid.id}}&uid={{i.uid.id}}&cid={{i.cid.id}}">Feedback</a></td>
+                   
+                  
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </table>
+           
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+{% if msg %}
+<script>
+   
+    alert('{{msg}}')
+</script>
+{% endif %}
+
+
+{% endblock %}
